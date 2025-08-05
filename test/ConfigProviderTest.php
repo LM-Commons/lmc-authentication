@@ -7,7 +7,7 @@ namespace LmcTest\Authentication;
 use Lmc\Authentication\ConfigProvider;
 use PHPUnit\Framework\TestCase;
 
-class ConfigProviderTest extends TestCase
+final class ConfigProviderTest extends TestCase
 {
     public function testConfigProvider(): void
     {

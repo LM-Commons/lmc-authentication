@@ -6,6 +6,6 @@ namespace Lmc\Authentication\Exception;
 
 use RuntimeException;
 
-class InvalidConfigurationException extends RuntimeException
+final class InvalidConfigurationException extends RuntimeException
 {
 }

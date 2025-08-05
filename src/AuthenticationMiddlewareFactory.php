@@ -8,15 +8,14 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 use Webmozart\Assert\Assert;
 
-class AuthenticationMiddlewareFactory implements FactoryInterface
+final class AuthenticationMiddlewareFactory implements FactoryInterface
 {
-
     /**
      * @inheritDoc
      */
     public function __invoke(
         ContainerInterface $container,
-        $requestedName,
+        string $requestedName,
         ?array $options = null
     ): AuthenticationMiddleware {
         $authAdapter = $container->has(AuthenticationInterface::class)
