@@ -1,1 +1,1 @@
-# LMC Authentication for Mezzio
+# LMC Authentication
