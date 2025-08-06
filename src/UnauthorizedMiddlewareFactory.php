@@ -10,7 +10,6 @@ use Webmozart\Assert\Assert;
 
 class UnauthorizedMiddlewareFactory implements FactoryInterface
 {
-
     /**
      * @inheritDoc
      */
@@ -27,6 +26,5 @@ class UnauthorizedMiddlewareFactory implements FactoryInterface
             );
         }
         return new UnauthorizedMiddleware($respopnseAdapter);
-
     }
 }
