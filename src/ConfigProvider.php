@@ -18,6 +18,7 @@ final class ConfigProvider
         return [
             'factories' => [
                 AuthenticationMiddleware::class => AuthenticationMiddlewareFactory::class,
+                UnauthorizedMiddleware::class   => UnauthorizedMiddlewareFactory::class,
             ],
         ];
     }

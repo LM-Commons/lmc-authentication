@@ -9,10 +9,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-readonly class UnauthorizedResponseMiddleware implements MiddlewareInterface
+readonly class UnauthorizedMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private UnauthorizesResponseInterface $responseAdapter
+        private UnauthorizedResponseInterface $responseAdapter
     ) {
     }
 
