@@ -2,7 +2,6 @@
   "name": "lm-commons/lmc-authentication",
   "description": "Laminas Mezzio Authentication",
   "type": "library",
-  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "mezzio",
