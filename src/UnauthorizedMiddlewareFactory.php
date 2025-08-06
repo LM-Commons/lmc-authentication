@@ -13,7 +13,7 @@ class UnauthorizedMiddlewareFactory implements FactoryInterface
     /**
      * @inheritDoc
      */
-    public function __invoke(ContainerInterface $container, string $requestedName, ?array $options = null): mixed
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
     {
         $respopnseAdapter = $container->has(UnauthorizedResponseInterface::class)
             ? $container->get(UnauthorizedResponseInterface::class)
