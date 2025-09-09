@@ -9,6 +9,9 @@
     <MissingOverrideAttribute>
       <code><![CDATA[public function __invoke(]]></code>
     </MissingOverrideAttribute>
+    <MissingParamType>
+      <code><![CDATA[$requestedName]]></code>
+    </MissingParamType>
   </file>
   <file src="src/Exception/ExceptionInterface.php">
     <UnusedClass>
@@ -22,8 +25,11 @@
   </file>
   <file src="src/UnauthorizedMiddlewareFactory.php">
     <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(ContainerInterface $container, string $requestedName, ?array $options = null): mixed]]></code>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed]]></code>
     </MissingOverrideAttribute>
+    <MissingParamType>
+      <code><![CDATA[$requestedName]]></code>
+    </MissingParamType>
   </file>
   <file src="src/UserInterface.php">
     <PossiblyUnusedMethod>

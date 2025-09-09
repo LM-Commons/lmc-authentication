@@ -15,7 +15,7 @@ final class AuthenticationMiddlewareFactory implements FactoryInterface
      */
     public function __invoke(
         ContainerInterface $container,
-        string $requestedName,
+        $requestedName,
         ?array $options = null
     ): AuthenticationMiddleware {
         $authAdapter = $container->has(AuthenticationInterface::class)
