@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace Lmc\Authentication;
 
-use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 use Webmozart\Assert\Assert;
 
-final class AuthenticationMiddlewareFactory implements FactoryInterface
+final class AuthenticationMiddlewareFactory
 {
-    /**
-     * @inheritDoc
-     */
-    public function __invoke(
-        ContainerInterface $container,
-        $requestedName,
-        ?array $options = null
-    ): AuthenticationMiddleware {
+    public function __invoke(ContainerInterface $container): AuthenticationMiddleware
+    {
         $authAdapter = $container->has(AuthenticationInterface::class)
             ? $container->get(AuthenticationInterface::class)
             : null;
