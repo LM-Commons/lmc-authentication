@@ -8,23 +8,20 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 use Webmozart\Assert\Assert;
 
-class UnauthorizedMiddlewareFactory implements FactoryInterface
+final class UnauthorizedMiddlewareFactory implements FactoryInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
+    public function __invoke(ContainerInterface $container, string $requestedName, ?array $options = null): mixed
     {
-        $respopnseAdapter = $container->has(UnauthorizedResponseInterface::class)
+        $responseAdapter = $container->has(UnauthorizedResponseInterface::class)
             ? $container->get(UnauthorizedResponseInterface::class)
             : null;
-        Assert::nullOrIsInstanceOf($respopnseAdapter, UnauthorizedResponseInterface::class);
+        Assert::nullOrIsInstanceOf($responseAdapter, UnauthorizedResponseInterface::class);
 
-        if (null === $respopnseAdapter) {
+        if (null === $responseAdapter) {
             throw new Exception\InvalidConfigurationException(
                 'UnauthorizedResponseInterface service is not configured'
             );
         }
-        return new UnauthorizedMiddleware($respopnseAdapter);
+        return new UnauthorizedMiddleware($responseAdapter);
     }
 }

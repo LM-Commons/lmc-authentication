@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-readonly class UnauthorizedMiddleware implements MiddlewareInterface
+final readonly class UnauthorizedMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private UnauthorizedResponseInterface $responseAdapter
