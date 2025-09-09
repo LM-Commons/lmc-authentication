@@ -11,7 +11,6 @@ use Lmc\Authentication\UnauthorizedResponseInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
@@ -35,9 +34,6 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
         $this->responseAdapter = $this->createMock(UnauthorizedResponseInterface::class);
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     */
     public function testInvokeWithResponseAdapter(): void
     {
         $this->container
@@ -53,13 +49,10 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
             ->willReturn($this->responseAdapter);
 
         /** @var MiddlewareInterface $middleware */
-        $middleware = ($this->factory)($this->container, '', []);
+        $middleware = ($this->factory)($this->container);
         self::assertEquals(new UnauthorizedMiddleware($this->responseAdapter), $middleware);
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     */
     public function testInvokeWithInvalidResponseAdapter(): void
     {
         $this->container
@@ -69,8 +62,7 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
             ->willReturn(false);
 
         self::expectException(InvalidConfigurationException::class);
-        /** @psalm-suppress UnusedVariable */
-        /** @psalm-suppress MixedAssignment */
-        $middleware = ($this->factory)($this->container, '', []);
+
+        ($this->factory)($this->container);
     }
 }

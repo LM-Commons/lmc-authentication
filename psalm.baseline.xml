@@ -5,14 +5,6 @@
       <code><![CDATA[public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface]]></code>
     </MissingOverrideAttribute>
   </file>
-  <file src="src/AuthenticationMiddlewareFactory.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(]]></code>
-    </MissingOverrideAttribute>
-    <MissingParamType>
-      <code><![CDATA[$requestedName]]></code>
-    </MissingParamType>
-  </file>
   <file src="src/Exception/ExceptionInterface.php">
     <UnusedClass>
       <code><![CDATA[ExceptionInterface]]></code>
@@ -22,14 +14,6 @@
     <MissingOverrideAttribute>
       <code><![CDATA[public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface]]></code>
     </MissingOverrideAttribute>
-  </file>
-  <file src="src/UnauthorizedMiddlewareFactory.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed]]></code>
-    </MissingOverrideAttribute>
-    <MissingParamType>
-      <code><![CDATA[$requestedName]]></code>
-    </MissingParamType>
   </file>
   <file src="src/UserInterface.php">
     <PossiblyUnusedMethod>

@@ -11,7 +11,6 @@ use Lmc\Authentication\Exception\InvalidConfigurationException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 #[CoversClass(AuthenticationMiddlewareFactory::class)]
@@ -34,9 +33,6 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
         $this->authentication = $this->createMock(AuthenticationInterface::class);
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     */
     public function testInvokeWithAuthenticationService(): void
     {
         $this->container
@@ -51,13 +47,10 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
             ->with(AuthenticationInterface::class)
             ->willReturn($this->authentication);
 
-        $middleware = ($this->factory)($this->container, '', []);
+        $middleware = ($this->factory)($this->container);
         self::assertEquals(new AuthenticationMiddleware($this->authentication), $middleware);
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     */
     public function testInvokeWithInvalidAuthenticationService(): void
     {
         $this->container
@@ -68,6 +61,6 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
 
         self::expectException(InvalidConfigurationException::class);
 
-        ($this->factory)($this->container, '', []);
+        ($this->factory)($this->container);
     }
 }
