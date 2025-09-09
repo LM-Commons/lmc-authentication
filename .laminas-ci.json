@@ -1,14 +1,2 @@
 {
-  "exclude": [
-    {
-      "name": "PHPUnit",
-      "php": "8.4",
-      "dependencies": "lowest"
-    },
-    {
-      "name": "PHPUnit",
-      "php": "8.4",
-      "dependencies": "latest"
-    }
-  ]
 }
