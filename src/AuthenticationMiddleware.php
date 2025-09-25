@@ -21,6 +21,10 @@ final class AuthenticationMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // If already authenticated
+        if ($request->getAttribute(UserInterface::class) !== null) {
+            return $handler->handle($request);
+        }
         $user = $this->authAdapter->authenticate($request);
         return $handler->handle($request->withAttribute(UserInterface::class, $user));
     }
