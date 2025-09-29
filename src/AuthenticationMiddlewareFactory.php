@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lmc\Authentication;
 
+use Mezzio\Authentication\AuthenticationInterface;
+use Mezzio\Authentication\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 use Webmozart\Assert\Assert;
 
@@ -17,7 +19,7 @@ final class AuthenticationMiddlewareFactory
         Assert::nullOrIsInstanceOf($authAdapter, AuthenticationInterface::class);
 
         if (null === $authAdapter) {
-            throw new Exception\InvalidConfigurationException(
+            throw new InvalidConfigException(
                 'AuthenticationInterface service is not configured'
             );
         }

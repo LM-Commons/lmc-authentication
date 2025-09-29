@@ -6,6 +6,9 @@ namespace Lmc\Authentication\Exception;
 
 use Throwable;
 
+/**
+ * @deprecated
+ */
 interface ExceptionInterface extends Throwable
 {
 }
