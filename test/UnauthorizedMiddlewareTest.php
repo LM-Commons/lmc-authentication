@@ -17,9 +17,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 #[CoversClass(UnauthorizedMiddleware::class)]
 final class UnauthorizedMiddlewareTest extends TestCase
 {
-    /** @var ResponseInterface&MockObject $responseAdapter  */
-    private ResponseInterface $responseAdapter;
-
     /** @var ServerRequestInterface&MockObject */
     private ServerRequestInterface $request;
 
