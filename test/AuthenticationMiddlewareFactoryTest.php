@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LmcTest\Authentication;
 
-use Lmc\Authentication\AuthenticationInterface;
 use Lmc\Authentication\AuthenticationMiddleware;
 use Lmc\Authentication\AuthenticationMiddlewareFactory;
-use Lmc\Authentication\Exception\InvalidConfigurationException;
+use Mezzio\Authentication\AuthenticationInterface;
+use Mezzio\Authentication\Exception\InvalidConfigException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -59,7 +59,7 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
             ->with(AuthenticationInterface::class)
             ->willReturn(false);
 
-        self::expectException(InvalidConfigurationException::class);
+        self::expectException(InvalidConfigException::class);
 
         ($this->factory)($this->container);
     }

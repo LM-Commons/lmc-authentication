@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace LmcTest\Authentication;
 
-use Lmc\Authentication\Exception\InvalidConfigurationException;
 use Lmc\Authentication\UnauthorizedMiddleware;
 use Lmc\Authentication\UnauthorizedMiddlewareFactory;
-use Lmc\Authentication\UnauthorizedResponseInterface;
+use Mezzio\Authentication\AuthenticationInterface;
+use Mezzio\Authentication\Exception\InvalidConfigException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -23,34 +23,35 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
     /** @var UnauthorizedMiddlewareFactory&MockObject  */
     private UnauthorizedMiddlewareFactory $factory;
 
-    private UnauthorizedResponseInterface $responseAdapter;
+    /** @var AuthenticationInterface&MockObject  */
+    private AuthenticationInterface $authAdapter;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->container = $this->createMock(ContainerInterface::class);
         /** @psalm-suppress InvalidPropertyAssignmentValue */
-        $this->factory         = new UnauthorizedMiddlewareFactory();
-        $this->responseAdapter = $this->createMock(UnauthorizedResponseInterface::class);
+        $this->factory     = new UnauthorizedMiddlewareFactory();
+        $this->authAdapter = $this->createMock(AuthenticationInterface::class);
     }
 
-    public function testInvokeWithResponseAdapter(): void
+    public function testInvokeWithAuthenticationAdapter(): void
     {
         $this->container
             ->expects($this->once())
             ->method('has')
-            ->with(UnauthorizedResponseInterface::class)
+            ->with(AuthenticationInterface::class)
             ->willReturn(true);
 
         $this->container
             ->expects(self::once())
             ->method('get')
-            ->with(UnauthorizedResponseInterface::class)
-            ->willReturn($this->responseAdapter);
+            ->with(AuthenticationInterface::class)
+            ->willReturn($this->authAdapter);
 
         /** @var MiddlewareInterface $middleware */
         $middleware = ($this->factory)($this->container);
-        self::assertEquals(new UnauthorizedMiddleware($this->responseAdapter), $middleware);
+        self::assertEquals(new UnauthorizedMiddleware($this->authAdapter), $middleware);
     }
 
     public function testInvokeWithInvalidResponseAdapter(): void
@@ -58,10 +59,10 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
         $this->container
             ->expects($this->once())
             ->method('has')
-            ->with(UnauthorizedResponseInterface::class)
+            ->with(AuthenticationInterface::class)
             ->willReturn(false);
 
-        self::expectException(InvalidConfigurationException::class);
+        self::expectException(InvalidConfigException::class);
 
         ($this->factory)($this->container);
     }

@@ -5,21 +5,10 @@
       <code><![CDATA[public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface]]></code>
     </MissingOverrideAttribute>
   </file>
-  <file src="src/Exception/ExceptionInterface.php">
-    <UnusedClass>
-      <code><![CDATA[ExceptionInterface]]></code>
-    </UnusedClass>
-  </file>
   <file src="src/UnauthorizedMiddleware.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface]]></code>
     </MissingOverrideAttribute>
-  </file>
-  <file src="src/UserInterface.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[getIdentity]]></code>
-      <code><![CDATA[getRoles]]></code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="test/AuthenticationMiddlewareFactoryTest.php">
     <MissingOverrideAttribute>
