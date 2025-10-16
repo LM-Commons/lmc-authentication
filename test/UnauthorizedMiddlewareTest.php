@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace LmcTest\Authentication;
 
 use Lmc\Authentication\UnauthorizedMiddleware;
-use Lmc\Authentication\UnauthorizedResponseInterface;
-use Lmc\Authentication\UserInterface;
+use Mezzio\Authentication\AuthenticationInterface;
+use Mezzio\Authentication\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -17,25 +17,25 @@ use Psr\Http\Server\RequestHandlerInterface;
 #[CoversClass(UnauthorizedMiddleware::class)]
 final class UnauthorizedMiddlewareTest extends TestCase
 {
-    /** @var UnauthorizedResponseInterface&MockObject $responseAdapter  */
-    private UnauthorizedResponseInterface $responseAdapter;
-
     /** @var ServerRequestInterface&MockObject */
     private ServerRequestInterface $request;
 
     /** @var RequestHandlerInterface&MockObject */
     private RequestHandlerInterface $handler;
 
+    /** @var AuthenticationInterface&MockObject  */
+    private AuthenticationInterface $authAdapter;
+
     private UnauthorizedMiddleware $middleware;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->responseAdapter = $this->createMock(UnauthorizedResponseInterface::class);
-        $this->request         = $this->createMock(ServerRequestInterface::class);
-        $this->handler         = $this->createMock(RequestHandlerInterface::class);
+        $this->authAdapter = $this->createMock(AuthenticationInterface::class);
+        $this->request     = $this->createMock(ServerRequestInterface::class);
+        $this->handler     = $this->createMock(RequestHandlerInterface::class);
 
-        $this->middleware = new UnauthorizedMiddleware($this->responseAdapter);
+        $this->middleware = new UnauthorizedMiddleware($this->authAdapter);
     }
 
     public function testProcessWithUser(): void
@@ -69,7 +69,7 @@ final class UnauthorizedMiddlewareTest extends TestCase
             ->with(UserInterface::class)
             ->willReturn(null);
 
-        $this->responseAdapter
+        $this->authAdapter
             ->expects($this->once())
             ->method('unauthorizedResponse')
             ->with($this->request)
