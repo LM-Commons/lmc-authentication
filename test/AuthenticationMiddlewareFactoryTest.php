@@ -8,6 +8,7 @@ use Lmc\Authentication\AuthenticationMiddleware;
 use Lmc\Authentication\AuthenticationMiddlewareFactory;
 use Mezzio\Authentication\AuthenticationInterface;
 use Mezzio\Authentication\Exception\InvalidConfigException;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +25,7 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
 
     private AuthenticationInterface $authentication;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
