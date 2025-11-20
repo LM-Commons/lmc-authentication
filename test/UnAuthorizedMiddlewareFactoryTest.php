@@ -26,6 +26,7 @@ final class UnAuthorizedMiddlewareFactoryTest extends TestCase
     /** @var AuthenticationInterface&MockObject  */
     private AuthenticationInterface $authAdapter;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

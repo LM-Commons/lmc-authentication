@@ -28,6 +28,7 @@ final class UnauthorizedMiddlewareTest extends TestCase
 
     private UnauthorizedMiddleware $middleware;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

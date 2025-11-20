@@ -28,6 +28,7 @@ final class AuthenticationMiddlewareTest extends TestCase
 
     private AuthenticationMiddleware $middleware;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

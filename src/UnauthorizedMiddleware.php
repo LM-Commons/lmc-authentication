@@ -18,6 +18,7 @@ final readonly class UnauthorizedMiddleware implements MiddlewareInterface
     ) {
     }
 
+    #[\Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (null !== $request->getAttribute(UserInterface::class)) {

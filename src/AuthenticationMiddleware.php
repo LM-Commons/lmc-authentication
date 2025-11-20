@@ -24,6 +24,7 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // If already authenticated

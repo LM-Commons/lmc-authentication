@@ -24,6 +24,7 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
 
     private AuthenticationInterface $authentication;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
