@@ -7,6 +7,7 @@ namespace LmcTest\Authentication;
 use Lmc\Authentication\UnauthorizedMiddleware;
 use Mezzio\Authentication\AuthenticationInterface;
 use Mezzio\Authentication\UserInterface;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -28,6 +29,7 @@ final class UnauthorizedMiddlewareTest extends TestCase
 
     private UnauthorizedMiddleware $middleware;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

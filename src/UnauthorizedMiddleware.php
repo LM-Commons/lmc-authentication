@@ -6,6 +6,7 @@ namespace Lmc\Authentication;
 
 use Mezzio\Authentication\AuthenticationInterface;
 use Mezzio\Authentication\UserInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -18,6 +19,7 @@ final readonly class UnauthorizedMiddleware implements MiddlewareInterface
     ) {
     }
 
+    #[Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (null !== $request->getAttribute(UserInterface::class)) {

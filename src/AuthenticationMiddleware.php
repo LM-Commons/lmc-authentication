@@ -6,6 +6,7 @@ namespace Lmc\Authentication;
 
 use Mezzio\Authentication\AuthenticationInterface;
 use Mezzio\Authentication\UserInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -24,6 +25,7 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // If already authenticated
