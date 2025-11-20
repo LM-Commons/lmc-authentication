@@ -16,4 +16,5 @@ $ php composer.phar require lm-commons/lmc-authentication
 
 ## Documentation
 
-Browse the documentation online at https://lm-commons.github.io/lmc-authentication/.
+Browse the documentation online at
+[LM-Commons](https://lm-commons.github.io/lmc-authentication/).
