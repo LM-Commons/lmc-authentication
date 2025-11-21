@@ -66,4 +66,31 @@ final class AuthenticationMiddlewareTest extends TestCase
 
         self::AssertSame($response, $this->middleware->process($this->request, $this->handler));
     }
+
+    public function testAlreadyAuthenticated(): void
+    {
+        $response = $this->createMock(ResponseInterface::class);
+
+        $user = $this->createMock(UserInterface::class);
+
+        $this->authentication
+            ->expects($this->never())
+            ->method('authenticate')
+            ->with($this->request)
+            ->willReturn($user);
+
+        $this->request
+            ->expects($this->once())
+            ->method('getAttribute')
+            ->with(UserInterface::class)
+            ->willReturn($user);
+
+        $this->handler
+            ->expects($this->once())
+            ->method('handle')
+            ->with($this->request)
+            ->willReturn($response);
+
+        self::AssertSame($response, $this->middleware->process($this->request, $this->handler));
+    }
 }
