@@ -3,8 +3,11 @@ title: Quick Start
 sidebar_position: 1
 ---
 
-LmcRbac offers components and services to implement role-based access control (RBAC) in your application.
-LmcRbac extends the components provided by [laminas-permissions-rbac](https://github.com/laminas/laminas-permissions-rbac).
+Lmc Authentication offers middleware to implement authentication in your
+application.
+
+Lmc Authentication works in the same way as Mezzio Authentication except that
+it does not perform any action when authentication does result into a user.
 
 ## Requirements
 
@@ -17,7 +20,7 @@ lmc-authentication only officially supports installation through Composer.
 Install the module:
 
 ```sh
-$ composer require lm-commons/lmc-authntication
+$ composer require lm-commons/lmc-authentication
 ```
 
 You will be prompted by the Laminas Component Installer plugin to inject the
