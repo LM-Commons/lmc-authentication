@@ -42,9 +42,9 @@ final class AuthenticationMiddlewareTest extends TestCase
 
     public function testProcess(): void
     {
-        $response = $this->createMock(ResponseInterface::class);
+        $response = $this->createStub(ResponseInterface::class);
 
-        $user = $this->createMock(UserInterface::class);
+        $user = $this->createStub(UserInterface::class);
 
         $this->authentication
             ->expects($this->once())
@@ -69,9 +69,9 @@ final class AuthenticationMiddlewareTest extends TestCase
 
     public function testAlreadyAuthenticated(): void
     {
-        $response = $this->createMock(ResponseInterface::class);
+        $response = $this->createStub(ResponseInterface::class);
 
-        $user = $this->createMock(UserInterface::class);
+        $user = $this->createStub(UserInterface::class);
 
         $this->authentication
             ->expects($this->never())

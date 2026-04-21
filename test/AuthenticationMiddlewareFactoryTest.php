@@ -32,7 +32,7 @@ final class AuthenticationMiddlewareFactoryTest extends TestCase
         $this->container = $this->createMock(ContainerInterface::class);
         /** @psalm-suppress InvalidPropertyAssignmentValue */
         $this->factory        = new AuthenticationMiddlewareFactory();
-        $this->authentication = $this->createMock(AuthenticationInterface::class);
+        $this->authentication = $this->createStub(AuthenticationInterface::class);
     }
 
     public function testInvokeWithAuthenticationService(): void
