@@ -11,7 +11,7 @@ it does not perform any action when authentication does result into a user.
 
 ## Requirements
 
-- PHP 8.2 or higher
+- PHP 8.3 or higher
 
 ## Installation
 
