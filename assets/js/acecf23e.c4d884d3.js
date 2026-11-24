@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[903],{1912:t=>{t.exports=JSON.parse('{"blogBasePath":"/lmc-authentication/blog","blogTitle":"Blog","authorsListPath":"/lmc-authentication/blog/authors"}')}}]);
